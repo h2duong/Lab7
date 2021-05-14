@@ -31,49 +31,41 @@ self.addEventListener('install', function(event) {
   
 });
 
-//   - One for activation ( check out MDN's clients.claim() for this step )
+// //   - One for activation ( check out MDN's clients.claim() for this step )
 
-self.addEventListener('activate', function(event) {
+// self.addEventListener('activate', function(event) {
 
-    var cacheAllowlist = ['my-site-cache-v1'];
+//     var cacheAllowlist = ['my-site-cache-v1'];
   
-    event.waitUntil(
-      caches.keys().then(function(cacheNames) {
-        return Promise.all(
-          cacheNames.map(function(cacheName) {
-            if (cacheAllowlist.indexOf(cacheName) === -1) {
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
-    );
-  });
+//     event.waitUntil(
+//       caches.keys().then(function(cacheNames) {
+//         return Promise.all(
+//           cacheNames.map(function(cacheName) {
+//             if (cacheAllowlist.indexOf(cacheName) === -1) {
+//               return caches.delete(cacheName);
+//             }
+//           })
+//         );
+//       })
+//     );
+//   });
+
 //   - One for fetch requests
 
-// self.addEventListener('fetch', function(event) {
-//   event.respondWith(
-//     caches.match(event.request)
-//       .then(function(response) {
-//         // Cache hit - return response
-//         if (response) {
-//           return response;
-//         }
-//         return fetch(event.request);
-//       }
-//     )
-//   );
-// });
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
+});
 
-self.addEventListener('fetch', (e) => {
-  e.respondWith((async () => {
-    const r = await caches.match(e.request);
-    console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
-    if (r) { return r; }
-    const response = await fetch(e.request);
-    const cache = await caches.open(CACHE_NAME);
-    console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-    cache.put(e.request, response.clone());
-    return response;
-  })());
+self.addEventListener('activate', event => {
+    event.waitUntil(clients.claim());
 });
