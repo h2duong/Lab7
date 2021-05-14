@@ -32,23 +32,9 @@ self.addEventListener('install', function(event) {
 });
 
 // //   - One for activation ( check out MDN's clients.claim() for this step )
-
-// self.addEventListener('activate', function(event) {
-
-//     var cacheAllowlist = ['my-site-cache-v1'];
-  
-//     event.waitUntil(
-//       caches.keys().then(function(cacheNames) {
-//         return Promise.all(
-//           cacheNames.map(function(cacheName) {
-//             if (cacheAllowlist.indexOf(cacheName) === -1) {
-//               return caches.delete(cacheName);
-//             }
-//           })
-//         );
-//       })
-//     );
-//   });
+self.addEventListener('activate', event => {
+    event.waitUntil(clients.claim());
+});
 
 //   - One for fetch requests
 
@@ -66,6 +52,4 @@ self.addEventListener('fetch', function(event) {
   );
 });
 
-self.addEventListener('activate', event => {
-    event.waitUntil(clients.claim());
-});
+
