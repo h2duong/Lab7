@@ -28,6 +28,7 @@ self.addEventListener('install', function(event) {
         return cache.addAll(urlsToCache);
       })
   );
+  
 });
 
 //   - One for activation ( check out MDN's clients.claim() for this step )
