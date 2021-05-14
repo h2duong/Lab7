@@ -15,8 +15,8 @@ var urlsToCache = [
   '/images/lab.jpg',
   '/images/mountains.jpg',
   '/images/sky.jpg',
-  '/settings.svg',
-  'https://cse110lab6.herokuapp.com/entries'
+  '/settings.svg'
+//   'https://cse110lab6.herokuapp.com/entries'
 ];
 
 self.addEventListener('install', function(event) {
