@@ -38,6 +38,7 @@ self.addEventListener('activate', function(event) {
     var cacheAllowlist = ['my-site-cache-v1'];
   
     event.waitUntil(
+      clients.claim();
       caches.keys().then(function(cacheNames) {
         return Promise.all(
           cacheNames.map(function(cacheName) {
