@@ -5,18 +5,18 @@
 
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-  '/',
-  '/style.css',
-  '/scripts/script.js',
-  '/scripts/router.js',
-  '/index.html',
-  '/components/entry-page.js',
-  '/components/journal-entry.js',
-  '/images/lab.jpg',
-  '/images/mountains.jpg',
-  '/images/sky.jpg',
-  '/settings.svg'
-//   'https://cse110lab6.herokuapp.com/entries'
+  '/Lab7',
+  '/Lab7/style.css',
+  '/Lab7/scripts/script.js',
+  '/Lab7/scripts/router.js',
+  '/Lab7/index.html',
+  '/Lab7/components/entry-page.js',
+  '/Lab7/components/journal-entry.js',
+  '/Lab7/images/lab.jpg',
+  '/Lab7/images/mountains.jpg',
+  '/Lab7/images/sky.jpg',
+  '/Lab7/settings.svg',
+  'https://cse110lab6.herokuapp.com/entries'
 ];
 
 self.addEventListener('install', function(event) {
