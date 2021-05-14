@@ -5,7 +5,7 @@
 
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-  '/Lab7',
+  '/Lab7/',
   '/Lab7/style.css',
   '/Lab7/scripts/script.js',
   '/Lab7/scripts/router.js',
